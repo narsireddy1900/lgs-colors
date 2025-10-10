@@ -1,48 +1,70 @@
-"""
-LGS Design System — Typography Tokens
+# LGS Typography — Design specification
 
-Usage:
-    import typography
-    print(typography.style("h1"))
-    # {'family': 'heading', 'size': 32, 'weight': 700, 'use': 'Main page headings'}
-"""
-
-# -----------------------------
-# Font families
-# -----------------------------
-FONTS: dict[str, str] = {
-    "heading": 'Nunito, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    "body":    'Open Sans, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+TYPOGRAPHY = {
+    "display_hero": {
+        "font": "Nunito",
+        "size": "48–64px",
+        "weight": "Bold / ExtraBold",
+        "use": "Homepage hero, major marketing moments",
+    },
+    "h1_page_title": {
+        "font": "Nunito",
+        "size": "32px",
+        "weight": "Bold",
+        "use": "Main page headings",
+    },
+    "h2_section_title": {
+        "font": "Nunito",
+        "size": "24px",
+        "weight": "SemiBold",
+        "use": "Subsections within pages",
+    },
+    "h3_card_title": {
+        "font": "Nunito",
+        "size": "20px",
+        "weight": "SemiBold",
+        "use": "Card headers, sidebar headings",
+    },
+    "body_large": {
+        "font": "OpenSans",
+        "size": "18px",
+        "weight": "Regular",
+        "use": "Intro paragraphs, explanation-heavy areas",
+    },
+    "body_base": {
+        "font": "OpenSans",
+        "size": "16px",
+        "weight": "Regular",
+        "use": "Primary content, default paragraph text",
+    },
+    "body_small": {
+        "font": "OpenSans",
+        "size": "14px",
+        "weight": "Regular",
+        "use": "Notes, descriptions, tool tips",
+    },
+    "caption": {
+        "font": "OpenSans",
+        "size": "12px",
+        "weight": "SemiBold",
+        "use": "Footnotes, secondary info, helper labels",
+    },
+    "button_text": {
+        "font": "Nunito",
+        "size": "14–16px",
+        "weight": "SemiBold / Bold",
+        "use": "Button labels",
+    },
+    "input_field_text": {
+        "font": "Nunito",
+        "size": "16px",
+        "weight": "Regular",
+        "use": "User-typed input in fields",
+    },
+    "input_label": {
+        "font": "Nunito",
+        "size": "12–14px",
+        "weight": "Medium",
+        "use": "Label above form fields",
+    },
 }
-
-# -----------------------------
-# Text styles
-# -----------------------------
-STYLES: dict[str, dict[str, object]] = {
-    "display":   {"family": "heading", "size": (48, 64), "weight": 800, "use": "Homepage hero"},
-    "h1":        {"family": "heading", "size": 32,       "weight": 700, "use": "Main page headings"},
-    "h2":        {"family": "heading", "size": 24,       "weight": 600, "use": "Section titles"},
-    "h3":        {"family": "heading", "size": 20,       "weight": 600, "use": "Card/Sidebar titles"},
-    "body_lg":   {"family": "body",    "size": 18,       "weight": 400, "use": "Intro paragraphs"},
-    "body":      {"family": "body",    "size": 16,       "weight": 400, "use": "Primary content"},
-    "body_sm":   {"family": "body",    "size": 14,       "weight": 400, "use": "Notes/Descriptions"},
-    "caption":   {"family": "body",    "size": 12,       "weight": 600, "use": "Footnotes/Helper labels"},
-    "button":    {"family": "heading", "size": 16,       "weight": 600, "use": "Button labels"},
-    "input":     {"family": "heading", "size": 16,       "weight": 400, "use": "Input field text"},
-    "label":     {"family": "heading", "size": 12,       "weight": 500, "use": "Input label"},
-}
-
-# -----------------------------
-# Helpers
-# -----------------------------
-def css_stack(key: str) -> str:
-    """Return the CSS-like family stack string ('Nunito, system-ui, ...')."""
-    return FONTS[key]
-
-def style(name: str) -> dict[str, object]:
-    """Return the raw token dict for a text style (size/weight/family/use)."""
-    return STYLES[name]
-
-def point_size(px: int, dpi: int = 96) -> float:
-    """Convert px to points (pt) for libraries like reportlab/matplotlib."""
-    return px * 72.0 / dpi
