@@ -49,5 +49,4 @@ We use **Nunito** for headings and interactive elements, and **Open Sans** for b
 
 ---
 
-## 📁 Repository Contents
 
